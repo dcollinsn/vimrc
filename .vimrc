@@ -1039,12 +1039,6 @@ function! AddVimPointKeywords ()
 endfunction
 
 
-" "=====[ Grammar checking ]========================================
-
-highlight GRAMMARIAN_ERRORS_MSG   ctermfg=red   cterm=bold
-highlight GRAMMARIAN_CAUTIONS_MSG ctermfg=white cterm=bold
-
-
 "=====[ Add or subtract comments ]===============================
 
 " Work out what the comment character is, by filetype...
