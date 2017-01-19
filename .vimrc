@@ -191,42 +191,6 @@ function! TrimTrailingWS ()
 endfunction
 
 
-"====[ Handle encoding issues on a Macos terminal]============
-
-set encoding=latin1
-
-Nmap <silent> U  [Toggle UTF8]  :call ToggleUTF8()<CR><CR>:echo '[' . &fileencoding . ']'<CR>
-Nmap <silent> UU [Toggle Unicode terminal]  :call ToggleTerminal()<CR><CR>
-
-function! ToggleUTF8 ()
-    if &fileencoding =~ 'utf-8'
-        set fileencoding=latin1
-        set termencoding=
-        !osascript -e 'tell application "Terminal" to set current settings of front window to settings set "stdterminal"'
-    else
-        set fileencoding=utf8
-        set termencoding=utf8
-        !osascript -e 'tell application "Terminal" to set current settings of front window to settings set "stdterminal_unicode"'
-    endif
-endfunction
-
-let g:UnicodeTerminal = 0
-function! ToggleTerminal ()
-    if g:UnicodeTerminal
-        !osascript -e 'tell application "Terminal" to set current settings of front window to settings set "stdterminal"'
-        let g:UnicodeTerminal = 0
-        set termencoding=
-        echo '[Latin1 terminal]'
-    else
-        !osascript -e 'tell application "Terminal" to set current settings of front window to settings set "stdterminal_unicode"'
-        let g:UnicodeTerminal = 1
-        set termencoding=utf8
-        echo '[Unicode terminal]'
-    endif
-endfunction
-
-
-
 "====[ Set background hint (if possible) ]=============
 
 "if $VIMBACKGROUND != ""
@@ -428,7 +392,7 @@ augroup END
 "=====[ Configure % key (via matchit plugin) ]==============================
 
 " Match angle brackets...
-set matchpairs+=<:>,«:»
+set matchpairs+=<:>
 
 " Match double-angles, XML tags and Perl keywords...
 let TO = ':'
@@ -446,6 +410,8 @@ let b:match_debug = 1
 
 
 "=====[ Miscellaneous features (mainly options) ]=====================
+
+au FileType gitcommit set tw=68
 
 set title           "Show filename in titlebar of window
 set titleold=
@@ -523,11 +489,11 @@ function! File_advance (dir)
 endfunction
 
 " Format file with autoformat (capitalize to specify options)...
-nmap          F  !Gformat -T4 -
-nmap <silent> f  !Gformat -T4<CR>
-nmap          ff r<CR>fgej
-vmap          F :!format -T4 -all -
-vmap <silent> f :!format -T4 -all<CR>
+"nmap          F  !Gformat -T4 -
+"nmap <silent> f  !Gformat -T4<CR>
+"nmap          ff r<CR>fgej
+"vmap          F :!format -T4 -all -
+"vmap <silent> f :!format -T4 -all<CR>
 
 " Install current file and swap to alternate file...
 Nmap IP [Install current file and swap to alternate] :!install -f %<CR>
@@ -618,22 +584,6 @@ function! Perldoc_impl (args)
         exec '!pd ' . a:args
     endif
 endfunction
-
-" Compile the list of installed Perl modules (and include the name under the cursor)...
-let s:module_files = readfile($HOME.'/.vim/perlmodules')
-function! CompletePerlModuleNames(prefix, cmdline, curpos)
-    let cfile = expand('<cfile>')
-    let prefix = a:prefix
-    if prefix == cfile
-        let prefix = ""
-    endif
-    if empty(prefix) && cfile =~ '^\w\+\(::\w\+\)*$'
-        return [cfile] + filter(copy(s:module_files), 'v:val =~ ''\c\_^' . prefix. "'")
-    else
-        return filter(copy(s:module_files), 'v:val =~ ''\c\_^' . prefix. "'")
-    endif
-endfunction
-
 
 " Handle Perl include files better...
 "set include=^\\s*use\\s\\+\\zs\\k\\+\\ze
@@ -779,7 +729,7 @@ endfunction
 
 augroup Perl_Setup
     autocmd!
-    autocmd BufNewFile *.p[lm] 0r !file_template <afile>
+    autocmd BufNewFile *.p[lm] 0r !perl ~/.vim/bin/file_template <afile>
     autocmd BufNewFile *.p[lm] /^[ \t]*[#].*implementation[ \t]\+here/
 augroup END
 
@@ -1058,7 +1008,8 @@ iab  previosu  previous
 
 "=====[ Tab handling ]======================================
 
-set tabstop=4      "Tab indentation levels every four columns
+set tabstop=8      "Literal tabs are eight columns (and also bad...)
+set softtabstop=4  "When I type tab, insert four spaces
 set shiftwidth=4   "Indent/outdent by four columns
 set expandtab      "Convert all tabs that are typed into spaces
 set shiftround     "Always indent/outdent to nearest tabstop
@@ -1177,8 +1128,8 @@ Nmap <silent> ;R [Toggle cursor line highlighting] :set cursorline!<CR>
 
 " Toggle cursor column highlighting on request...
 " (via visualguide.vim plugin, so as to play nice)
-nmap <silent> \  :silent call VG_Show_CursorColumn('flip')<CR>
-vmap <silent> \  :<C-W>silent call VG_Show_CursorColumn('flip')<CR>gv
+nmap <silent> <C-\>  :silent call VG_Show_CursorColumn('flip')<CR>
+vmap <silent> <C-\>  :<C-W>silent call VG_Show_CursorColumn('flip')<CR>gv
 imap <silent> <C-\>  <C-O>:silent call VG_Show_CursorColumn('flip')<CR>
 
 
@@ -1629,4 +1580,39 @@ function! DC_DiffChanges ()
     setlocal foldtext=DC_LineNumberOnly()
     nmap <silent><buffer> zd :diffoff<CR>:q!<CR>:set diffopt& fillchars& foldcolumn=0<CR>:set nodiff<CR>:highlight Normal ctermfg=NONE<CR>
 endfunction
+
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%73v', 100)
+call matchadd('ColorColumn', '\%81v', 100)
+
+nnoremap <silent> n   n:call My_HLNext(0.4)<cr>
+nnoremap <silent> N   N:call My_HLNext(0.4)<cr>
+
+function! My_HLNext (blinktime)
+    highlight WhiteOnBlack ctermfg=white ctermbg=black
+    let [bufnum, lnum, col, off] = getpos('.')
+    let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
+    let target_pat = '\c\%#'.@/
+    let blinks = 3
+    for n in range(1, blinks)
+        let red = matchadd('WhiteOnBlack', target_pat, 101)
+        redraw
+        exec 'sleep ' . float2nr(a:blinktime / (2*blinks) * 1000) . 'm'
+        call matchdelete(red)
+        redraw
+        exec 'sleep ' . float2nr(a:blinktime / (2*blinks) * 1000) . 'm'
+    endfor
+endfunction
+
+" undo / redo
+nnoremap <silent> U   <C-r>
+
+"====== Enable Airline ======
+set laststatus=2
+
+" Tab line - show list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+"====== GitGutter ======
+set updatetime=250
 

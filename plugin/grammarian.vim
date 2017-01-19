@@ -75,11 +75,11 @@ let s:GRAMMARIAN_REPETITION_DISPLAY_ID = matchadd('GRAMMARIAN_REPETITION_DISPLAY
 
 " Is error file up-to-date???
 function! s:recompile_spelling_files ()
-    if !filereadable('/Users/damian/.vim/grammarian/errors/spell/en.latin1.add.spl')
-        exec 'mkspell /Users/damian/.vim/grammarian/errors/spell/en.latin1.add'
+    if !filereadable('/home/dcollins/.vim/grammarian/errors/spell/en.latin1.add.spl')
+        exec 'mkspell /home/dcollins/.vim/grammarian/errors/spell/en.latin1.add'
     endif
-    if !filereadable('/Users/damian/.vim/grammarian/cautions/spell/en.latin1.add.spl')
-        exec 'mkspell /Users/damian/.vim/grammarian/cautions/spell/en.latin1.add'
+    if !filereadable('/home/dcollins/.vim/grammarian/cautions/spell/en.latin1.add.spl')
+        exec 'mkspell /home/dcollins/.vim/grammarian/cautions/spell/en.latin1.add'
     endif
 endfunction
 silent call s:recompile_spelling_files()
@@ -103,7 +103,7 @@ function! Grammarian_Toggle ()
         let s:grammarian_restore = {}
 
         " Clean up path for spelling
-        let &runtimepath = substitute(&runtimepath, ',/Users/damian/.vim/grammarian/\w\+','','g')
+        let &runtimepath = substitute(&runtimepath, ',/home/dcollins/.vim/grammarian/\w\+','','g')
         let &encoding = &encoding
 
         " Restore previous spelling appearance...
@@ -128,12 +128,12 @@ function! Grammarian_Toggle ()
         endif
 
         " Install error or caution data
-        let &runtimepath = substitute(&runtimepath, ',/Users/damian/.vim/grammarian/\w\+','','g')
-        let &runtimepath .= ',/Users/damian/.vim/grammarian/'.s:grammarian_query_type
+        let &runtimepath = substitute(&runtimepath, ',/home/dcollins/.vim/grammarian/\w\+','','g')
+        let &runtimepath .= ',/home/dcollins/.vim/grammarian/'.s:grammarian_query_type
         let &encoding = &encoding
 
         " Load explanations...
-        exec 'source /Users/damian/.vim/grammarian/'.s:grammarian_query_type.'/data.vim'
+        exec 'source /home/dcollins/.vim/grammarian/'.s:grammarian_query_type.'/data.vim'
 
         " Select highlighting...
         highlight! link GRAMMARIAN_OLD_SPELLBAD SpellBad
