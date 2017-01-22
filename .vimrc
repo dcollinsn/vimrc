@@ -1606,7 +1606,29 @@ set laststatus=2
 
 " Tab line - show list of buffers
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+" Show commands in the process of being typed
+set showcmd
 
 "====== GitGutter ======
 set updatetime=250
 
+"====== Pymode ======
+
+" Disable Rope
+let g:pymode_rope = 0
+
+
+"====== Navigation ======
+
+" Move between splits
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" New pane to right or bottom
+set splitbelow
+set splitright
