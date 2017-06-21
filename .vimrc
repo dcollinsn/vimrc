@@ -830,6 +830,7 @@ endfunction
                 " ==========   =====        =============================
 call SmartcomAdd( '=',         ANYTHING,    "\<ESC>:call EQAS_Align('nmap')\<CR>A")
 call SmartcomAdd( '=>',        ANYTHING,    AlignOnPat('=>') )
+call SmartcomAdd( ' <',        ANYTHING,    AlignOnPat(' <') )
 call SmartcomAdd( '\s#',       ANYTHING,    AlignOnPat('\%(\S\s*\)\@<= #') )
 call SmartcomAdd( '[''"]\s*:', ANYTHING,    AlignOnPat(':'),                   {'filetype':'vim'} )
 call SmartcomAdd( ':',         ANYTHING,    "\<TAB>",                          {'filetype':'vim'} )
@@ -1369,26 +1370,26 @@ endfunction
 
 "====[ Show when lines extend past column 80 ]=================================>-<=====================
 
-highlight ColorColumn ctermfg=208 ctermbg=Black
-
-function! MarkMargin (on)
-    if exists('b:MarkMargin')
-        try
-            call matchdelete(b:MarkMargin)
-        catch /./
-        endtry
-        unlet b:MarkMargin
-    endif
-    if a:on
-        let b:MarkMargin = matchadd('ColorColumn', '\%81v\s*\S', 100)
-    endif
-endfunction
-
-augroup MarkMargin
-    autocmd!
-    autocmd  BufEnter  *       :call MarkMargin(1)
-    autocmd  BufEnter  *.vp*   :call MarkMargin(0)
-augroup END
+"highlight ColorColumn ctermfg=208 ctermbg=Black
+"
+"function! MarkMargin (on)
+"    if exists('b:MarkMargin')
+"        try
+"            call matchdelete(b:MarkMargin)
+"        catch /./
+"        endtry
+"        unlet b:MarkMargin
+"    endif
+"    if a:on
+"        let b:MarkMargin = matchadd('ColorColumn', '\%81v\s*\S', 100)
+"    endif
+"endfunction
+"
+"augroup MarkMargin
+"    autocmd!
+"    autocmd  BufEnter  *       :call MarkMargin(1)
+"    autocmd  BufEnter  *.vp*   :call MarkMargin(0)
+"augroup END
 
 
 "====[ Accelerated up and down on wrapped lines ]============
@@ -1677,7 +1678,7 @@ function! Smartcomma ()
     endif
 endfunction
 
-highlight ColorColumn ctermbg=magenta
+highlight ColorColumn ctermbg=green ctermfg=black
 call matchadd('ColorColumn', '\%73v', 100)
 call matchadd('ColorColumn', '\%81v', 100)
 
@@ -1720,6 +1721,9 @@ set updatetime=250
 
 " Disable Rope
 let g:pymode_rope = 0
+
+" Configure linters
+let g:pymode_lint_checkers = ['pyflakes', 'pycodestyle', 'mccabe']
 
 
 "====== Navigation ======

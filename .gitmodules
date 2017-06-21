@@ -19,3 +19,6 @@
 [submodule "bundle/django-plus.vim"]
 	path = bundle/django-plus.vim
 	url = https://github.com/tweekmonster/django-plus.vim.git
+[submodule "bundle/python-mode-wilywampa"]
+	path = bundle/python-mode
+	url = https://github.com/wilywampa/python-mode.git
