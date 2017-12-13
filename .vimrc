@@ -62,79 +62,79 @@ set cpo-=aA
 
 "====[ Go back to alternate file (but retain other g<whatever> mappings)]====
 
-nmap g  :w<CR>:e #<CR>
-
-function! s:conditional_nnoremap ( name )
-    if maparg(a:name, 'n') == ""
-        execute 'nnoremap  <unique> ' . a:name . ' ' . a:name
-    endif
-endfunction
-call s:conditional_nnoremap( 'g,' )
-call s:conditional_nnoremap( 'g;' )
-call s:conditional_nnoremap( 'g~' )
-call s:conditional_nnoremap( 'g~~' )
-call s:conditional_nnoremap( 'g~g~' )
-call s:conditional_nnoremap( 'g#' )
-call s:conditional_nnoremap( 'g$' )
-call s:conditional_nnoremap( 'g&' )
-call s:conditional_nnoremap( "g'" )
-call s:conditional_nnoremap( 'g*' )
-call s:conditional_nnoremap( 'g0' )
-call s:conditional_nnoremap( 'g8' )
-call s:conditional_nnoremap( 'g<' )
-call s:conditional_nnoremap( 'g<C-G>' )
-call s:conditional_nnoremap( 'g<C-H>' )
-call s:conditional_nnoremap( 'g<C-]>' )
-call s:conditional_nnoremap( 'g<Down>' )
-call s:conditional_nnoremap( 'g<End>' )
-call s:conditional_nnoremap( 'g<Home>' )
-call s:conditional_nnoremap( 'g<LeftMouse>' )
-call s:conditional_nnoremap( 'g<MiddleMouse>' )
-call s:conditional_nnoremap( 'g<RightMouse>' )
-call s:conditional_nnoremap( 'g<Up>' )
-call s:conditional_nnoremap( 'g?' )
-call s:conditional_nnoremap( 'g??' )
-call s:conditional_nnoremap( 'g?g?' )
-call s:conditional_nnoremap( 'g@' )
-call s:conditional_nnoremap( 'gD' )
-call s:conditional_nnoremap( 'gE' )
-call s:conditional_nnoremap( 'gF' )
-call s:conditional_nnoremap( 'gH' )
-call s:conditional_nnoremap( 'gI' )
-call s:conditional_nnoremap( 'gJ' )
-call s:conditional_nnoremap( 'gP' )
-call s:conditional_nnoremap( 'gR' )
-call s:conditional_nnoremap( 'gU' )
-call s:conditional_nnoremap( 'gUU' )
-call s:conditional_nnoremap( 'gUgU' )
-call s:conditional_nnoremap( 'gV' )
-call s:conditional_nnoremap( 'g]' )
-call s:conditional_nnoremap( 'g^' )
-call s:conditional_nnoremap( 'g`' )
-call s:conditional_nnoremap( 'ga' )
-call s:conditional_nnoremap( 'gd' )
-call s:conditional_nnoremap( 'ge' )
-call s:conditional_nnoremap( 'gf' )
-call s:conditional_nnoremap( 'gg' )
-call s:conditional_nnoremap( 'gh' )
-call s:conditional_nnoremap( 'gi' )
-call s:conditional_nnoremap( 'gj' )
-call s:conditional_nnoremap( 'gk' )
-call s:conditional_nnoremap( 'gm' )
-call s:conditional_nnoremap( 'go' )
-call s:conditional_nnoremap( 'gp' )
-call s:conditional_nnoremap( 'gq' )
-call s:conditional_nnoremap( 'gr' )
-call s:conditional_nnoremap( 'gs' )
-call s:conditional_nnoremap( 'gu' )
-call s:conditional_nnoremap( 'gugu' )
-call s:conditional_nnoremap( 'guu' )
-call s:conditional_nnoremap( 'gv' )
-call s:conditional_nnoremap( 'gw' )
+"nmap g  :w<CR>:e #<CR>
+"
+"function! s:conditional_nnoremap ( name )
+"    if maparg(a:name, 'n') == ""
+"        execute 'nnoremap  <unique> ' . a:name . ' ' . a:name
+"    endif
+"endfunction
+"call s:conditional_nnoremap( 'g,' )
+"call s:conditional_nnoremap( 'g;' )
+"call s:conditional_nnoremap( 'g~' )
+"call s:conditional_nnoremap( 'g~~' )
+"call s:conditional_nnoremap( 'g~g~' )
+"call s:conditional_nnoremap( 'g#' )
+"call s:conditional_nnoremap( 'g$' )
+"call s:conditional_nnoremap( 'g&' )
+"call s:conditional_nnoremap( "g'" )
+"call s:conditional_nnoremap( 'g*' )
+"call s:conditional_nnoremap( 'g0' )
+"call s:conditional_nnoremap( 'g8' )
+"call s:conditional_nnoremap( 'g<' )
+"call s:conditional_nnoremap( 'g<C-G>' )
+"call s:conditional_nnoremap( 'g<C-H>' )
+"call s:conditional_nnoremap( 'g<C-]>' )
+"call s:conditional_nnoremap( 'g<Down>' )
+"call s:conditional_nnoremap( 'g<End>' )
+"call s:conditional_nnoremap( 'g<Home>' )
+"call s:conditional_nnoremap( 'g<LeftMouse>' )
+"call s:conditional_nnoremap( 'g<MiddleMouse>' )
+"call s:conditional_nnoremap( 'g<RightMouse>' )
+"call s:conditional_nnoremap( 'g<Up>' )
+"call s:conditional_nnoremap( 'g?' )
+"call s:conditional_nnoremap( 'g??' )
+"call s:conditional_nnoremap( 'g?g?' )
+"call s:conditional_nnoremap( 'g@' )
+"call s:conditional_nnoremap( 'gD' )
+"call s:conditional_nnoremap( 'gE' )
+"call s:conditional_nnoremap( 'gF' )
+"call s:conditional_nnoremap( 'gH' )
+"call s:conditional_nnoremap( 'gI' )
+"call s:conditional_nnoremap( 'gJ' )
+"call s:conditional_nnoremap( 'gP' )
+"call s:conditional_nnoremap( 'gR' )
+"call s:conditional_nnoremap( 'gU' )
+"call s:conditional_nnoremap( 'gUU' )
+"call s:conditional_nnoremap( 'gUgU' )
+"call s:conditional_nnoremap( 'gV' )
+"call s:conditional_nnoremap( 'g]' )
+"call s:conditional_nnoremap( 'g^' )
+"call s:conditional_nnoremap( 'g`' )
+"call s:conditional_nnoremap( 'ga' )
+"call s:conditional_nnoremap( 'gd' )
+"call s:conditional_nnoremap( 'ge' )
+"call s:conditional_nnoremap( 'gf' )
+"call s:conditional_nnoremap( 'gg' )
+"call s:conditional_nnoremap( 'gh' )
+"call s:conditional_nnoremap( 'gi' )
+"call s:conditional_nnoremap( 'gj' )
+"call s:conditional_nnoremap( 'gk' )
+"call s:conditional_nnoremap( 'gm' )
+"call s:conditional_nnoremap( 'go' )
+"call s:conditional_nnoremap( 'gp' )
+"call s:conditional_nnoremap( 'gq' )
+"call s:conditional_nnoremap( 'gr' )
+"call s:conditional_nnoremap( 'gs' )
+"call s:conditional_nnoremap( 'gu' )
+"call s:conditional_nnoremap( 'gugu' )
+"call s:conditional_nnoremap( 'guu' )
+"call s:conditional_nnoremap( 'gv' )
+"call s:conditional_nnoremap( 'gw' )
 "call s:conditional_nnoremap( 'gx' )
 
 " Make gn jump into visual block mode, instead if plain visual mode
-nnoremap gn  gn<C-V>
+"nnoremap gn  gn<C-V>
 
 
 "====[ Use persistent undo ]=================
@@ -464,7 +464,7 @@ set infercase                       "Adjust completions to match case
 
 set noshowmode                      "Suppress mode change messages
 
-set updatecount=10                  "Save buffer every 10 chars typed
+"set updatecount=10                  "Save buffer every 10 chars typed
 
 
 " Keycodes and maps timeout in 3/10 sec...
@@ -620,14 +620,14 @@ set iskeyword-=,
 
 " Insert common Perl code structures...
 
-iab udd use Data::Dump 'ddx';<CR>ddx;<LEFT>
-iab udv use Dumpvalue;<CR>Dumpvalue->new->dumpValues();<ESC>hi
-iab uds use Data::Show;<CR>show
-iab ubm use Benchmark qw( cmpthese );<CR><CR>cmpthese -10, {<CR>};<ESC>O
-iab usc use Smart::Comments;<CR>###
-iab uts use Test::Simple 'no_plan';
-iab utm use Test::More 'no_plan';
-iab dbs $DB::single = 1;<ESC>
+"iab udd use Data::Dump 'ddx';<CR>ddx;<LEFT>
+"iab udv use Dumpvalue;<CR>Dumpvalue->new->dumpValues();<ESC>hi
+"iab uds use Data::Show;<CR>show
+"iab ubm use Benchmark qw( cmpthese );<CR><CR>cmpthese -10, {<CR>};<ESC>O
+"iab usc use Smart::Comments;<CR>###
+"iab uts use Test::Simple 'no_plan';
+"iab utm use Test::More 'no_plan';
+"iab dbs $DB::single = 1;<ESC>
 
 
 "=====[ Emphasize typical mistakes in Vim and Perl files ]=========
@@ -636,7 +636,7 @@ iab dbs $DB::single = 1;<ESC>
 highlight WHITE_ON_RED    ctermfg=white  ctermbg=red
 
 " Emphasize undereferenced references...
-call matchadd('WHITE_ON_RED', '_ref[ ]*[[{(]\|_ref[ ]*-[^>]')
+"call matchadd('WHITE_ON_RED', '_ref[ ]*[[{(]\|_ref[ ]*-[^>]')
 
 " Emphasize typical mistakes a Perl hacker makes in .vim files...
 let g:VimMistakes
@@ -890,10 +890,10 @@ autocmd BufNewFile,BufRead  *.itn  nnoremap zd !!gen_itinerary_dates<CR>
 "=====[ General programming support ]===================================
 
 " Insert various shebang lines...
-iab hbc #! /bin/csh
-iab hbs #! /bin/sh
-iab hbp #! /usr/bin/env polyperl<CR>use 5.020;<CR>use warnings;<CR>use experimentals;<CR>
-iab hb6 #! /usr/bin/env perl6<CR>use v6;
+"iab hbc #! /bin/csh
+"iab hbs #! /bin/sh
+"iab hbp #! /usr/bin/env polyperl<CR>use 5.020;<CR>use warnings;<CR>use experimentals;<CR>
+"iab hb6 #! /usr/bin/env perl6<CR>use v6;
 
 
 " Execute current file polymorphically...
@@ -932,98 +932,6 @@ endfunction
 
 "Expand hh -> helpg...
 cmap <expr> hh CommandExpandAtCol1('hh','helpg ')
-
-
-"=====[ Cut and paste from MacOSX clipboard ]====================
-
-" When in Normal mode, paste over the current line...
-nmap <silent> <C-P> 0d$:call NTransPaste()<CR>
-
-function! NTransPaste()
-    " Remember the last yanked text...
-    let reg_save = @@
-
-    " Grab the MacOSX clipboard contents via a shell command...
-    let clipboard = system("pbtranspaste")
-
-    if clipboard =~ "\<C-K>"
-        let clipboard = substitute(clipboard,"\<C-M>","",  'g')
-        let clipboard = substitute(clipboard,"\<C-K>","\n",'g')
-    else
-        let clipboard = substitute(clipboard,"\<C-M>","\n",'g')
-    endif
-
-    " Put them in the yank buffer...
-    call setreg('@', clipboard, 'V')
-
-    " Paste and visually select them...
-    silent exe "normal! P"
-    silent exe "normal! V".len(substitute(clipboard,'[^\n]','','g'))."jO"
-
-    " Restore the previous yanked text...
-    let @@ = reg_save
-endfunction
-
-" When in Visual mode, paste over the selected region...
-vmap <silent> <C-P> x:call VTransPaste(visualmode())<CR>
-
-function! VTransPaste(type)
-    " Remember the last yanked text...
-    let reg_save = @@
-
-    " Grab the MacOSX clipboard contents via a shell command...
-    let clipboard = system("pbtranspaste")
-    let clipboard = substitute(clipboard,"\<C-M>","",  'g')
-    let clipboard = substitute(clipboard,"\<C-K>","\n",'g')
-
-    " Put them in the yank buffer...
-    call setreg('@', clipboard, a:type)
-
-    " Paste them...
-    silent exe "normal! P"
-    silent exe "normal! V".len(substitute(clipboard,'[^\n]','','g'))."jO"
-
-    " Restore the previous yanked text...
-    let @@ = reg_save
-endfunction
-
-
-" In Normal mode, yank the entire buffer...
-nmap <silent> <C-C> :w !pbtranscopy<CR><CR>
-
-" In Visual mode, yank the selection...
-vmap <silent> <C-C> :<C-U>call TransCopy(visualmode(), 1)<CR>
-
-function! TransCopy(type, ...)
-    " Yank inclusively (but remember the previous setup)...
-    let sel_save = &selection
-    let &selection = "inclusive"
-    let reg_save = @@
-
-    " Invoked from Visual mode, use '< and '> marks.
-    if a:0
-        silent exe "normal! `<" . a:type . "`>y"
-
-    " Or yank a line, if requested...
-    elseif a:type == 'line'
-        silent exe "normal! '[V']y"
-
-    " Or yank a block, if requested...
-    elseif a:type == 'block'
-        silent exe "normal! `[\<C-V>`]y"
-
-    " Or else, just yank the range...
-    else
-        silent exe "normal! `[v`]y"
-    endif
-
-    " Send it to the MacOSX clipboard...
-    call system("pbtranscopy", @@)
-
-    " Restore the previous setup...
-    let &selection = sel_save
-    let @@ = reg_save
-endfunction
 
 
 "=====[ Convert file to different tabspacings ]=====================
@@ -1076,18 +984,18 @@ nmap <silent> TF TST$
 
 "=====[ Correct common mistypings in-the-fly ]=======================
 
-iab    retrun  return
-iab     pritn  print
-iab       teh  the
-iab      liek  like
-iab  liekwise  likewise
-iab      Pelr  Perl
-iab      pelr  perl
-iab        ;t  't
-iab    Jarrko  Jarkko
-iab    jarrko  jarkko
-iab      moer  more
-iab  previosu  previous
+"iab    retrun  return
+"iab     pritn  print
+"iab       teh  the
+"iab      liek  like
+"iab  liekwise  likewise
+"iab      Pelr  Perl
+"iab      pelr  perl
+"iab        ;t  't
+"iab    Jarrko  Jarkko
+"iab    jarrko  jarkko
+"iab      moer  more
+"iab  previosu  previous
 
 
 "=====[ Tab handling ]======================================
@@ -1111,17 +1019,6 @@ highlight DiffAdd     cterm=bold ctermfg=green     ctermbg=black
 highlight DiffChange  cterm=bold ctermfg=grey      ctermbg=black
 highlight DiffDelete  cterm=bold ctermfg=black     ctermbg=black
 highlight DiffText    cterm=bold ctermfg=magenta   ctermbg=black
-
-"=====[ Extra completions for VimPoint files ]==========================
-
-autocmd BufNewFile,BufRead  *.vpt   :call AddVimPointKeywords()
-
-function! AddVimPointKeywords ()
-    call SmartcomAddAction(
-    \   '^=\k*', "", 'set complete=k~/.vim/VimPointKeywords|set iskeyword+=='
-    \)
-endfunction
-
 
 "=====[ Add or subtract comments ]===============================
 
@@ -1209,13 +1106,6 @@ Nmap <silent> ;R [Toggle cursor line highlighting] :set cursorline!<CR>
 nmap <silent> <C-\>  :silent call VG_Show_CursorColumn('flip')<CR>
 vmap <silent> <C-\>  :<C-W>silent call VG_Show_CursorColumn('flip')<CR>gv
 imap <silent> <C-\>  <C-O>:silent call VG_Show_CursorColumn('flip')<CR>
-
-
-"=====[ Highlight spelling errors on request ]===================
-
-set spelllang=en_au
-Nmap <silent> ;s  [Toggle spell-checking]               :set invspell spelllang=en<CR>
-Nmap <silent> ;ss [Toggle Basic English spell-checking] :set    spell spelllang=en-basic<CR>
 
 
 "======[ Create a toggle for the XML completion plugin ]=======
@@ -1401,6 +1291,8 @@ nmap k <Plug>(accelerated_jk_gk)
 
 
 "====[ Pathogen support ]======================
+
+let g:pathogen_disabled = ['vim-gitgutter']
 
 call pathogen#infect()
 call pathogen#helptags()
@@ -1667,16 +1559,16 @@ endfunction
 
 "=====[ ,, as => without delays ]===================
 
-inoremap <expr><silent>  ,  Smartcomma()
-
-function! Smartcomma ()
-    let [bufnum, lnum, col, off, curswant] = getcurpos()
-    if getline('.') =~ (',\%' . (col+off) . 'c')
-        return "\<C-H>=>"
-    else
-        return ','
-    endif
-endfunction
+"inoremap <expr><silent>  ,  Smartcomma()
+"
+"function! Smartcomma ()
+"    let [bufnum, lnum, col, off, curswant] = getcurpos()
+"    if getline('.') =~ (',\%' . (col+off) . 'c')
+"        return "\<C-H>=>"
+"    else
+"        return ','
+"    endif
+"endfunction
 
 highlight ColorColumn ctermbg=green ctermfg=black
 call matchadd('ColorColumn', '\%73v', 100)
@@ -1716,6 +1608,11 @@ set showcmd
 
 "====== GitGutter ======
 set updatetime=250
+let g:gitgutter_async = 1
+
+"====== Signify ======
+let g:signify_vcs_list = ['git']
+"let g:signify_realtime = 1
 
 "====== Pymode ======
 
@@ -1724,6 +1621,12 @@ let g:pymode_rope = 0
 
 " Configure linters
 let g:pymode_lint_checkers = ['pyflakes', 'pycodestyle', 'mccabe']
+
+let g:pymode_folding = 0
+let g:pymode_lint_unmodified = 1
+
+" Disable breakpoint thing
+let g:pymode_breakpoint = 0
 
 
 "====== Navigation ======
@@ -1762,3 +1665,6 @@ let g:changes_autocmd=1
 let g:netrw_sort_by='time'
 let g:netrw_sort_direction='reverse'
 
+"=====[ Command-T ]=====
+
+let g:CommandTAcceptSelectionCommand='open'
