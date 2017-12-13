@@ -22,3 +22,6 @@
 [submodule "bundle/python-mode-wilywampa"]
 	path = bundle/python-mode
 	url = https://github.com/wilywampa/python-mode.git
+[submodule "bundle/vim-signify"]
+	path = bundle/vim-signify
+	url = https://github.com/mhinz/vim-signify.git
