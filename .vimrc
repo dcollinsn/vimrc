@@ -3,7 +3,7 @@
 setglobal termencoding=utf-8 fileencodings=
 scriptencoding utf-8
 
-autocmd BufNewFile,BufRead  *   if &modifiable 
+autocmd BufNewFile,BufRead  *   if &modifiable
 autocmd BufNewFile,BufRead  *       set encoding=utf-8
 autocmd BufNewFile,BufRead  *   endif
 
@@ -18,7 +18,6 @@ runtime plugin/_autodoc.vim
 filetype plugin indent on
 
 autocmd BufNewFile,BufRead  *.t                     setfiletype perl
-autocmd BufNewFile,BufRead  *.itn                   setfiletype itn
 
 
 "=====[ Comments are important ]==================
@@ -42,99 +41,10 @@ Nmap <silent>  ;v   [Edit .vimrc]          :next $MYVIMRC<CR>
 Nmap           ;vv  [Edit .vim/plugin/...] :next ~/.vim/plugin/
 
 
-"====[ Edit my temporary working files ]====================
-
-Nmap tt  [Edit temporary files] :next ~/tmp/temporary_file
-
-
-
-"=====[ Edit files in local bin directory ]========
-
-Nmap ;b  [Edit ~/bin/...]  :next ~/bin/
-
-
 "=====[ Some of Vim's defaults are just annoying ]============
 
 " :read and :write shouldn't set #
 set cpo-=aA
-
-
-
-"====[ Go back to alternate file (but retain other g<whatever> mappings)]====
-
-"nmap g  :w<CR>:e #<CR>
-"
-"function! s:conditional_nnoremap ( name )
-"    if maparg(a:name, 'n') == ""
-"        execute 'nnoremap  <unique> ' . a:name . ' ' . a:name
-"    endif
-"endfunction
-"call s:conditional_nnoremap( 'g,' )
-"call s:conditional_nnoremap( 'g;' )
-"call s:conditional_nnoremap( 'g~' )
-"call s:conditional_nnoremap( 'g~~' )
-"call s:conditional_nnoremap( 'g~g~' )
-"call s:conditional_nnoremap( 'g#' )
-"call s:conditional_nnoremap( 'g$' )
-"call s:conditional_nnoremap( 'g&' )
-"call s:conditional_nnoremap( "g'" )
-"call s:conditional_nnoremap( 'g*' )
-"call s:conditional_nnoremap( 'g0' )
-"call s:conditional_nnoremap( 'g8' )
-"call s:conditional_nnoremap( 'g<' )
-"call s:conditional_nnoremap( 'g<C-G>' )
-"call s:conditional_nnoremap( 'g<C-H>' )
-"call s:conditional_nnoremap( 'g<C-]>' )
-"call s:conditional_nnoremap( 'g<Down>' )
-"call s:conditional_nnoremap( 'g<End>' )
-"call s:conditional_nnoremap( 'g<Home>' )
-"call s:conditional_nnoremap( 'g<LeftMouse>' )
-"call s:conditional_nnoremap( 'g<MiddleMouse>' )
-"call s:conditional_nnoremap( 'g<RightMouse>' )
-"call s:conditional_nnoremap( 'g<Up>' )
-"call s:conditional_nnoremap( 'g?' )
-"call s:conditional_nnoremap( 'g??' )
-"call s:conditional_nnoremap( 'g?g?' )
-"call s:conditional_nnoremap( 'g@' )
-"call s:conditional_nnoremap( 'gD' )
-"call s:conditional_nnoremap( 'gE' )
-"call s:conditional_nnoremap( 'gF' )
-"call s:conditional_nnoremap( 'gH' )
-"call s:conditional_nnoremap( 'gI' )
-"call s:conditional_nnoremap( 'gJ' )
-"call s:conditional_nnoremap( 'gP' )
-"call s:conditional_nnoremap( 'gR' )
-"call s:conditional_nnoremap( 'gU' )
-"call s:conditional_nnoremap( 'gUU' )
-"call s:conditional_nnoremap( 'gUgU' )
-"call s:conditional_nnoremap( 'gV' )
-"call s:conditional_nnoremap( 'g]' )
-"call s:conditional_nnoremap( 'g^' )
-"call s:conditional_nnoremap( 'g`' )
-"call s:conditional_nnoremap( 'ga' )
-"call s:conditional_nnoremap( 'gd' )
-"call s:conditional_nnoremap( 'ge' )
-"call s:conditional_nnoremap( 'gf' )
-"call s:conditional_nnoremap( 'gg' )
-"call s:conditional_nnoremap( 'gh' )
-"call s:conditional_nnoremap( 'gi' )
-"call s:conditional_nnoremap( 'gj' )
-"call s:conditional_nnoremap( 'gk' )
-"call s:conditional_nnoremap( 'gm' )
-"call s:conditional_nnoremap( 'go' )
-"call s:conditional_nnoremap( 'gp' )
-"call s:conditional_nnoremap( 'gq' )
-"call s:conditional_nnoremap( 'gr' )
-"call s:conditional_nnoremap( 'gs' )
-"call s:conditional_nnoremap( 'gu' )
-"call s:conditional_nnoremap( 'gugu' )
-"call s:conditional_nnoremap( 'guu' )
-"call s:conditional_nnoremap( 'gv' )
-"call s:conditional_nnoremap( 'gw' )
-"call s:conditional_nnoremap( 'gx' )
-
-" Make gn jump into visual block mode, instead if plain visual mode
-"nnoremap gn  gn<C-V>
 
 
 "====[ Use persistent undo ]=================
@@ -158,14 +68,6 @@ autocmd BufReadPost *  if line("'\"") > 1 && line("'\"") <= line("$")
                    \|     exe "normal! g`\""
                    \|  endif
 
-
-"====[ I'm sick of typing :%s/.../.../g ]=======
-
-Nmap S  [Shortcut for :s///g]  :%s//g<LEFT><LEFT>
-vmap S                         :Blockwise s//g<LEFT><LEFT>
-
-Nmap <expr> M  [Shortcut for :s/<last match>//g]  ':%s/' . @/ . '//g<LEFT><LEFT>'
-vmap <expr> M                                     ':s/' . @/ . '//g<LEFT><LEFT>'
 
 "====[ Toggle visibility of naughty characters ]============
 
@@ -210,12 +112,6 @@ endfunction
 
 
 "====[ Set background hint (if possible) ]=============
-
-"if $VIMBACKGROUND != ""
-"    exec 'set background=' . $VIMBACKGROUND
-"else
-"    set background=dark
-"endif
 
 set background=dark
 
@@ -279,12 +175,6 @@ function! ShiftLine()
     normal! >>
     set smartindent
 endfunction
-
-
-
-"====[ I hate modelines ]===================
-
-set modelines=0
 
 
 "=====[ Quicker access to Ex commands ]==================
@@ -396,16 +286,6 @@ augroup TODOHighlight
     autocmd BufLeave  *.todo,todo,ToDo,TODO  endif
 augroup END
 
-augroup ITNHighlight
-    autocmd!
-    autocmd BufEnter  *.itn   let b:syntax_was_on = exists("syntax_on")
-    autocmd BufEnter  *.itn   syntax enable
-    autocmd BufEnter  *.itn   set syntax=itn
-    autocmd BufLeave  *.itn   if !getbufvar("%","syntax_was_on")
-    autocmd BufLeave  *.itn       syntax off
-    autocmd BufLeave  *.itn   endif
-augroup END
-
 
 "=====[ Configure % key (via matchit plugin) ]==============================
 
@@ -428,8 +308,6 @@ let b:match_debug = 1
 
 
 "=====[ Miscellaneous features (mainly options) ]=====================
-
-au FileType gitcommit set tw=68
 
 set title           "Show filename in titlebar of window
 set titleold=
@@ -538,98 +416,6 @@ nmap %% $>i}``
 nmap $$ $<i}``
 
 
-" =====[ Perl programming support ]===========================
-
-" Execute Perl file...
-nmap <silent> W  :!clear;echo;echo;(script -q ~/tmp/script_$$ polyperl %; if (-s ~/tmp/script_$$) then; alert; echo; echo; echo; getraw; endif; rm -f ~/tmp/script_$$ )<CR><CR>
-
-" Execute Perl file (output to pager)...
-nmap E :!polyperl -m %<CR>
-
-" Execute Perl file (in debugger)...
-nmap Q :!polyperl -d %<CR>
-
-" Execute Perl file (in regex debugger)...
-nmap ;r :!rxrx %<CR>
-
-" Format file with perltidy...
-Nmap ;p [Perltidy the current buffer]  1G!Gperltidy<CR>
-
-" Show what changes perltidy would make...
-Nmap ;pp [Perltidy to the current buffer (as a diff)]  :call Perltidy_diff()<CR>
-
-function! Perltidy_diff ()
-    " Work out what the tidied file will be called...
-    let perl_file = expand( '%' )
-    let tidy_file = perl_file . '.tdy'
-
-    call system( 'perltidy -nst ' . perl_file . ' -o ' . tidy_file )
-
-    " Add the diff to the right of the current window...
-    set splitright
-    exe ":vertical diffsplit " . tidy_file
-
-    " Clean up the tidied version...
-    call delete(tidy_file)
-endfunction
-
-" Run perldoc with smarter completion...
-Nmap <expr> ?? [Go to documentation] CallPerldoc()
-set keywordprg=pd
-
-function! CallPerldoc ()
-    " When editing Vim files, revert to :help...
-    if &filetype == 'vim' || &buftype == 'help'
-        return ":help "
-
-    " Otherwise use Perldoc...
-    else
-        let target = matchstr(expand('<cfile>'), '\w\+\(::\w\+\)*')
-        set wildmode=list:full
-        return ":Perldoc "
-    endif
-endfunction
-
-"Complete perldoc requests with names of installed Perl modules
-command! -nargs=? -complete=customlist,CompletePerlModuleNames Perldoc  call Perldoc_impl(<q-args>)
-
-"Undo the special wildmoding and then execute the requested perdoc lookup...
-function! Perldoc_impl (args)
-    set wildmode=list:longest,full
-    if empty(a:args)
-        exec '!pd %'
-    else
-        exec '!pd ' . a:args
-    endif
-endfunction
-
-" Handle Perl include files better...
-"set include=^\\s*use\\s\\+\\zs\\k\\+\\ze
-"set includeexpr=substitute(v:fname,'::','/','g')
-"set suffixesadd=.pm
-"execute 'set path+=' . substitute($PERL5LIB, ':', ',', 'g')
-
-
-"Adjust keyword characters to match Perlish identifiers...
-set iskeyword+=$
-set iskeyword+=%
-set iskeyword+=@-@
-set iskeyword+=:
-set iskeyword-=,
-
-
-" Insert common Perl code structures...
-
-"iab udd use Data::Dump 'ddx';<CR>ddx;<LEFT>
-"iab udv use Dumpvalue;<CR>Dumpvalue->new->dumpValues();<ESC>hi
-"iab uds use Data::Show;<CR>show
-"iab ubm use Benchmark qw( cmpthese );<CR><CR>cmpthese -10, {<CR>};<ESC>O
-"iab usc use Smart::Comments;<CR>###
-"iab uts use Test::Simple 'no_plan';
-"iab utm use Test::More 'no_plan';
-"iab dbs $DB::single = 1;<ESC>
-
-
 "=====[ Emphasize typical mistakes in Vim and Perl files ]=========
 
 " Add a new high-visibility highlight combination...
@@ -663,110 +449,6 @@ endfunction
 
 function! VimMistakes_ClearMatch ()
     try | call matchdelete(g:VimMistakesID) | catch | endtry
-endfunction
-
-
-"=====[ Enable quickfix on Perl programs ]=======================
-
-Nmap ;m [Run :make and any tests on a Perl file]  :make<CR><CR><CR>:call PerlMake_Cleanup()<CR>
-
-function! PerlMake_Cleanup ()
-    " If there are errors, show the first of them...
-    if !empty(getqflist())
-        cc
-
-    " Otherwise, run the test suite as well...
-    else
-        call RunPerlTests()
-    endif
-endfunction
-
-set makeprg=polyperl\ -vc\ %\ $*
-
-augroup PerlMake
-    autocmd!
-    autocmd BufReadPost quickfix  setlocal number
-                             \ |  setlocal nowrap
-                             \ |  setlocal modifiable
-                             \ |  silent! %s/^[^|]*\//.../
-                             \ |  setlocal nomodifiable
-augroup END
-
-
-" Make it easy to navigate errors (and vimgreps)...
-
-nmap <silent> <RIGHT>         :cnext<CR>
-nmap <silent> <RIGHT><RIGHT>  :cnf<CR><C-G>
-nmap <silent> <LEFT>          :cprev<CR>
-nmap <silent> <LEFT><LEFT>    :cpf<CR><C-G>
-
-
-"=====[ Run a Perl module's test suite ]=========================
-
-let g:PerlTests_program       = 'perltests'   " ...What to call
-let g:PerlTests_search_height = 5             " ...How far up to search
-let g:PerlTests_test_dir      = '/t'          " ...Where to look for tests
-
-augroup Perl_Tests
-    autocmd!
-    autocmd BufEnter *.p[lm]  Nmap <buffer> ;t [Run local test suite] :call RunPerlTests()<CR>
-    autocmd BufEnter *.t      Nmap <buffer> ;t [Run local test suite] :call RunPerlTests()<CR>
-augroup END
-
-function! RunPerlTests ()
-    " Start in the current directory...
-    let dir = expand('%:h')
-
-    " Walk up through parent directories, looking for a test directory...
-    for n in range(g:PerlTests_search_height)
-        " When found...
-        if isdirectory(dir . g:PerlTests_test_dir)
-            " Go there...
-            silent exec 'cd ' . dir
-
-            " Run the tests...
-            exec ':!' . g:PerlTests_program
-
-            " Return to the previous directory...
-            silent cd -
-            return
-        endif
-
-        " Otherwise, keep looking up the directory tree...
-        let dir = dir . '/..'
-    endfor
-
-    " If not found, report the failure...
-    echohl WarningMsg
-    echomsg "Couldn't find a suitable" g:PerlTests_test_dir '(tried' g:PerlTests_search_height 'levels up)'
-    echohl None
-endfunction
-
-
-"=====[ Auto-setup for new files ]===========
-
-augroup Perl_Setup
-    autocmd!
-    autocmd BufNewFile *.p[lm] 0r !perl ~/.vim/bin/file_template <afile>
-    autocmd BufNewFile *.p[lm] /^[ \t]*[#].*implementation[ \t]\+here/
-augroup END
-
-
-"=====[ Proper syntax highlighting for Rakudo files ]===========
-
-autocmd BufNewFile,BufRead  *   :call CheckForPerl6()
-
-function! CheckForPerl6 ()
-    if getline(1) =~ 'rakudo'
-        setfiletype perl6
-    endif
-    if expand('<afile>:e') == 'pod6'
-        highlight Pod6Block_Heading1 cterm=bold,underline
-        highlight Pod6FC_Important cterm=underline
-
-        setfiletype pod6
-        syntax enable
-    endif
 endfunction
 
 
@@ -860,46 +542,6 @@ call SmartcomAdd( '^\s*sub',   EOL,    " ___ (___) {\n___\n}\n___",            {
 call SmartcomAddAction( '^\s*use\s\+\k\+', "",
 \                       'set complete=k~/.vim/perlmodules|set iskeyword+=:'
 \)
-
-" .itn itinerary files...
-let s:flight_template = "\t___\nOn: \t___\nFrom:\t___\nTo: \t___\nDepart:\t___\nDTerm:\t___\nArrive:\t___\nATerm:\t___\nLength:\t___\nClass:\t___\nSeat:\t___\nBRef:\t___\nTrans:\t___\n"
-let s:hotel_template = "\t___\nAddr:\t___\nPhone:\t___\nZone:\t___\nRate:\t___\nConfNo:\t___\n\nName:\t___\nEmail:\t___\nPhone:\t___\n"
-let s:event_template = "\t___\nTime:\t___\nVenue:\t___\n"
-
-                " Left             Right  Insert                  Where
-                " ==========       =====  =====================   ===================
-
-call SmartcomAdd( '^\s*Date:',     EOL,   "\t___\nSumm:\t___\n",  {'filetype':'itn'} )
-
-call SmartcomAdd( '^\s*Flight:',   EOL,   s:flight_template,      {'filetype':'itn'} )
-call SmartcomAdd( '^\s*Bus:',      EOL,   s:flight_template,      {'filetype':'itn'} )
-call SmartcomAdd( '^\s*Train:',    EOL,   s:flight_template,      {'filetype':'itn'} )
-
-call SmartcomAdd( '^\s*Hotel:',    EOL,   s:hotel_template,       {'filetype':'itn'} )
-
-call SmartcomAdd( '^\s*Event:',    EOL ,  s:event_template,       {'filetype':'itn'} )
-call SmartcomAdd( '^\s*Keynote:',  EOL ,  s:event_template,       {'filetype':'itn'} )
-call SmartcomAdd( '^\s*Talk:',     EOL ,  s:event_template,       {'filetype':'itn'} )
-call SmartcomAdd( '^\s*Course:',   EOL ,  s:event_template,       {'filetype':'itn'} )
-
-"=====[ Itinerary generation ]===========
-
-autocmd BufNewFile,BufRead  *.itn  nnoremap zd !!gen_itinerary_dates<CR>
-
-
-"=====[ General programming support ]===================================
-
-" Insert various shebang lines...
-"iab hbc #! /bin/csh
-"iab hbs #! /bin/sh
-"iab hbp #! /usr/bin/env polyperl<CR>use 5.020;<CR>use warnings;<CR>use experimentals;<CR>
-"iab hb6 #! /usr/bin/env perl6<CR>use v6;
-
-
-" Execute current file polymorphically...
-Nmap ,, [Execute current file] :w<CR>:!clear;echo;echo;run %<CR>
-Nmap ,,, [Debug current file]  :w<CR>:!clear;echo;echo;run -d %<CR>
-
 
 "=====[ Show help files in a new tab, plus add a shortcut for helpg ]==============
 
@@ -1258,30 +900,6 @@ function! Static_impl (cmd)
 endfunction
 
 
-"====[ Show when lines extend past column 80 ]=================================>-<=====================
-
-"highlight ColorColumn ctermfg=208 ctermbg=Black
-"
-"function! MarkMargin (on)
-"    if exists('b:MarkMargin')
-"        try
-"            call matchdelete(b:MarkMargin)
-"        catch /./
-"        endtry
-"        unlet b:MarkMargin
-"    endif
-"    if a:on
-"        let b:MarkMargin = matchadd('ColorColumn', '\%81v\s*\S', 100)
-"    endif
-"endfunction
-"
-"augroup MarkMargin
-"    autocmd!
-"    autocmd  BufEnter  *       :call MarkMargin(1)
-"    autocmd  BufEnter  *.vp*   :call MarkMargin(0)
-"augroup END
-
-
 "====[ Accelerated up and down on wrapped lines ]============
 
 "nnoremap  j  gj
@@ -1292,7 +910,7 @@ nmap k <Plug>(accelerated_jk_gk)
 
 "====[ Pathogen support ]======================
 
-let g:pathogen_disabled = ['vim-gitgutter']
+"let g:pathogen_disabled = ['vim-gitgutter']
 
 call pathogen#infect()
 call pathogen#helptags()
@@ -1570,9 +1188,9 @@ endfunction
 "    endif
 "endfunction
 
-highlight ColorColumn ctermbg=green ctermfg=black
-call matchadd('ColorColumn', '\%73v', 100)
-call matchadd('ColorColumn', '\%81v', 100)
+"highlight ColorColumn ctermbg=green ctermfg=black
+"call matchadd('ColorColumn', '\%73v', 100)
+"call matchadd('ColorColumn', '\%81v', 100)
 
 nnoremap <silent> n   n:call My_HLNext(0.4)<cr>
 nnoremap <silent> N   N:call My_HLNext(0.4)<cr>
@@ -1606,12 +1224,24 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " Show commands in the process of being typed
 set showcmd
 
+" Activate fancy fonts
+let g:airline_powerline_fonts = 1
+
+" Patch font issues
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.colnr = ':'
+let g:airline_section_x = '%{airline#parts#filetype()}'
+
 "====== GitGutter ======
 set updatetime=250
 let g:gitgutter_async = 1
+let g:gitgutter_set_sign_backgrounds = 1
+highlight SignColumn guibg=#000080 ctermbg=234
 
 "====== Signify ======
-let g:signify_vcs_list = ['git']
+"let g:signify_vcs_list = ['git']
 "let g:signify_realtime = 1
 
 "====== Pymode ======
@@ -1620,13 +1250,21 @@ let g:signify_vcs_list = ['git']
 let g:pymode_rope = 0
 
 " Configure linters
+let g:pymode_python = 'python3'
 let g:pymode_lint_checkers = ['pyflakes', 'pycodestyle', 'mccabe']
+let g:pymode_lint_ignore = ["E127", "E128", "E221", "E231", "E501", "W605"]
 
 let g:pymode_folding = 0
 let g:pymode_lint_unmodified = 1
+let g:pymode_lint_cwindow = 0
+let g:pymode_lint_message = 1
 
 " Disable breakpoint thing
 let g:pymode_breakpoint = 0
+
+" Open/close lint window
+nnoremap <Leader>l :lopen 8<CR>
+nnoremap <Leader>c :lclose<CR>
 
 
 "====== Navigation ======
@@ -1668,3 +1306,34 @@ let g:netrw_sort_direction='reverse'
 "=====[ Command-T ]=====
 
 let g:CommandTAcceptSelectionCommand='open'
+set wildignore=*/.git/*,*/venv/*,*/__pycache__/*,*/node_modules/*,*/src/*,*/media/*,*/static_root/*,*/data/*,*/apicache-py3/*
+
+"=====[ Python ]=====
+au FileType python set tw=99
+au FileType python set fo+=cqtrol
+au FileType python set com=b:#
+
+"=====[ Git ]=====
+au FileType gitcommit set tw=68
+au FileType gitcommit set fo+=twal
+
+"=====[ Vim ]=====
+au FileType vim set tw=80
+au FileType vim set fo-=ro
+
+"=====[ Arcanist ]=====
+au! BufNewFile,BufRead .arc{config,lint,rc,unit} setf json
+au! BufNewFile,BufRead new-commit setf arcanist
+au! BufNewFile,BufRead differential-update-comments setf arcanist
+au FileType arcanist set tw=72
+au FileType arcanist set fo+=tl
+
+"=====[ SCSS ]=====
+au FileType scss set sw=2
+au FileType scss set sts=2
+
+"=====[ Markdown ]=====
+au FileType markdown set tw=80
+
+"=====[ PHP ]=====
+au FileType php set expandtab!

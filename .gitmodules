@@ -7,9 +7,6 @@
 [submodule "bundle/vim-gitgutter"]
 	path = bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
-[submodule "bundle/vim-unimpaired"]
-	path = bundle/vim-unimpaired
-	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "bundle/command-t"]
 	path = bundle/command-t
 	url = https://github.com/wincent/command-t.git
@@ -22,6 +19,3 @@
 [submodule "bundle/python-mode-wilywampa"]
 	path = bundle/python-mode
 	url = https://github.com/wilywampa/python-mode.git
-[submodule "bundle/vim-signify"]
-	path = bundle/vim-signify
-	url = https://github.com/mhinz/vim-signify.git
