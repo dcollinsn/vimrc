@@ -266,7 +266,7 @@ Nmap <silent> ;y [Toggle syntax highlighting]
 
 
 
-"=====[ Always syntax highlight .patch and ToDo and .itn files ]=======================
+"=====[ Always syntax highlight .patch files ]=======================
 
 augroup PatchHighlight
     autocmd!
@@ -276,16 +276,6 @@ augroup PatchHighlight
     autocmd BufLeave  *.patch,*.diff      syntax off
     autocmd BufLeave  *.patch,*.diff  endif
 augroup END
-
-augroup TODOHighlight
-    autocmd!
-    autocmd BufEnter  *.todo,todo,ToDo,TODO  let b:syntax_was_on = exists("syntax_on")
-    autocmd BufEnter  *.todo,todo,ToDo,TODO  syntax enable
-    autocmd BufLeave  *.todo,todo,ToDo,TODO  if !getbufvar("%","syntax_was_on")
-    autocmd BufLeave  *.todo,todo,ToDo,TODO      syntax off
-    autocmd BufLeave  *.todo,todo,ToDo,TODO  endif
-augroup END
-
 
 "=====[ Configure % key (via matchit plugin) ]==============================
 
@@ -1238,6 +1228,7 @@ let g:airline_section_x = '%{airline#parts#filetype()}'
 set updatetime=250
 let g:gitgutter_async = 1
 let g:gitgutter_set_sign_backgrounds = 1
+let g:gitgutter_sign_priority = 5
 highlight SignColumn guibg=#000080 ctermbg=234
 
 "====== Signify ======
@@ -1251,13 +1242,16 @@ let g:pymode_rope = 0
 
 " Configure linters
 let g:pymode_python = 'python3'
-let g:pymode_lint_checkers = ['pyflakes', 'pycodestyle', 'mccabe']
-let g:pymode_lint_ignore = ["E127", "E128", "E221", "E231", "E501", "W605"]
+let g:pymode_lint_checkers = ['pylint', 'pep8', 'mccabe']
+let g:pymode_lint_ignore = ["E127", "E128", "E221", "E231", "E251", "E501", "W605"]
 
 let g:pymode_folding = 0
 let g:pymode_lint_unmodified = 1
 let g:pymode_lint_cwindow = 0
 let g:pymode_lint_message = 1
+
+" For whatever reason this isn't being properly set by the library...
+sign define Pymodef text=FF texthl=Info
 
 " Disable breakpoint thing
 let g:pymode_breakpoint = 0
@@ -1334,6 +1328,22 @@ au FileType scss set sts=2
 
 "=====[ Markdown ]=====
 au FileType markdown set tw=80
+au FileType markdown set fo+=t
 
 "=====[ PHP ]=====
 au FileType php set expandtab!
+
+"=====[ Always syntax on ]=====
+syntax on
+
+"=====[ Emmet ]=====
+let g:user_emmet_mode='a'
+let g:user_emmet_leader_key=';'
+
+let g:user_emmet_settings = {
+\    'html': {
+\        'snippets': {
+\            'trans': '{% trans "${cursor}" %}',
+\        },
+\    },
+\}
